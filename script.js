@@ -1,23 +1,36 @@
-fetch("galerie.json")
-.then(r=>r.json())
-.then(data=>{
+const user = "Wibbinho";
+const repo = "tv-bwg-galerie";
+const folder = "bilder";
 
-const gallery=document.getElementById("gallery");
 
-data.forEach(item=>{
+fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`)
 
-gallery.innerHTML+=`
+.then(response => response.json())
 
-<a class="card" href="${item.link}" target="_blank">
+.then(files => {
 
-<img src="${item.bild}">
+const gallery = document.getElementById("gallery");
 
-<h3>${item.titel}</h3>
 
-</a>
+files
+.filter(file => 
+    file.name.match(/\.(jpg|jpeg|png|webp)$/i)
+)
+.forEach(file => {
+
+
+gallery.innerHTML += `
+
+<div class="card">
+
+<img src="${file.download_url}">
+
+</div>
 
 `;
 
+
 });
+
 
 });
