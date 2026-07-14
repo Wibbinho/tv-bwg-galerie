@@ -2,35 +2,35 @@ const user = "Wibbinho";
 const repo = "tv-bwg-galerie";
 const folder = "bilder";
 
-
 fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`)
-
-.then(response => response.json())
-
+.then(r => r.json())
 .then(files => {
 
-const gallery = document.getElementById("gallery");
+    files = files
+        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f.name))
 
+        // Neueste zuerst (GitHub-Dateien haben ein Datum im Namen oder werden alphabetisch sortiert)
+        .sort((a,b)=>b.name.localeCompare(a.name))
 
-files
-.filter(file => 
-    file.name.match(/\.(jpg|jpeg|png|webp)$/i)
-)
-.forEach(file => {
+        // Nur 12 Bilder
+        .slice(0,12);
 
+    const gallery = document.getElementById("gallery");
 
-gallery.innerHTML += `
+    files.forEach(file=>{
 
-<div class="card">
+        gallery.innerHTML += `
+            <div class="gallery-item">
+                <img
+                    src="${file.download_url}"
+                    loading="lazy"
+                    data-full="${file.download_url}"
+                    alt="">
+            </div>
+        `;
 
-<img src="${file.download_url}">
-
-</div>
-
-`;
-
+    });
 
 });
 
-
-});
+</script>
