@@ -1,0 +1,19 @@
+[
+  {
+    "titel":"Sommerfest",
+    "bild":"bilder/sommerfest.jpg",
+    "link":"https://www.flickr.com/photos/..."
+  },
+
+  {
+    "titel":"Jugendtraining",
+    "bild":"bilder/jugend.jpg",
+    "link":"https://www.flickr.com/photos/..."
+  },
+
+  {
+    "titel":"Vereinsmeisterschaft",
+    "bild":"bilder/vm.jpg",
+    "link":"https://www.flickr.com/photos/..."
+  }
+]
