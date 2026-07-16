@@ -12,7 +12,7 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`)
         // Neueste zuerst (GitHub-Dateien haben ein Datum im Namen oder werden alphabetisch sortiert)
         .sort((a,b)=>b.name.localeCompare(a.name))
 
-        // Nur 12 Bilder
+        // Nur 24 Bilder
         .slice(0,24);
 
     const gallery = document.getElementById("gallery");
