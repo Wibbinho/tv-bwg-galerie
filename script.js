@@ -5,7 +5,7 @@ const folder = "bilder";
 fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`)
 .then(r => r.json())
 .then(files => {
-
+console.log("GitHub Dateien:", files.length);
     files = files
         .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f.name))
 
