@@ -13,7 +13,7 @@ fetch(`https://api.github.com/repos/${user}/${repo}/contents/${folder}`)
         .sort((a,b)=>b.name.localeCompare(a.name))
 
         // Nur 12 Bilder
-        .slice(0,12);
+        .slice(0,24);
 
     const gallery = document.getElementById("gallery");
 
